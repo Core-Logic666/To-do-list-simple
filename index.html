@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>To-Do List</title>
+</head>
+<body>
+<div id="app">
+  <h1>My tasks</h1>
+  <p class="subtitle" id="date-label"></p>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-num" id="stat-total">0</div><div class="stat-label">total</div></div>
+    <div class="stat"><div class="stat-num" id="stat-done">0</div><div class="stat-label">done</div></div>
+    <div class="stat"><div class="stat-num" id="stat-left">0</div><div class="stat-label">remaining</div></div>
+  </div>
+
+  <div class="input-row">
+    <input type="text" id="task-input" placeholder="Add a new task…" />
+    <select id="cat-select">
+      <option value="work">Work</option>
+      <option value="personal">Personal</option>
+      <option value="health">Health</option>
+      <option value="other">Other</option>
+    </select>
+    <button onclick="addTask()">Add</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="setFilter('all', this)">All</button>
+    <button class="tab" onclick="setFilter('active', this)">Active</button>
+    <button class="tab" onclick="setFilter('done', this)">Done</button>
+  </div>
+
+  <div class="task-list" id="task-list"></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

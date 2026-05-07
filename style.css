@@ -1,0 +1,240 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f5f4f0;
+    --surface: #ffffff;
+    --border: rgba(0,0,0,0.12);
+    --border-hover: rgba(0,0,0,0.25);
+    --text-primary: #1a1a18;
+    --text-secondary: #6b6b67;
+    --text-tertiary: #a8a8a3;
+    --accent: #1a1a18;
+    --radius-md: 8px;
+    --radius-lg: 14px;
+  }
+
+  body {
+    font-family: 'Georgia', serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 3rem 1rem;
+  }
+
+  #app { width: 100%; max-width: 560px; }
+
+  h1 {
+    font-size: 28px;
+    font-weight: normal;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.15rem;
+  }
+
+  .subtitle {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text-tertiary);
+    margin-bottom: 1.75rem;
+  }
+
+  /* Stats */
+  .stats {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat {
+    flex: 1;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+  }
+
+  .stat-num {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-primary);
+    font-family: 'Georgia', serif;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    margin-top: 2px;
+    font-family: sans-serif;
+    letter-spacing: 0.03em;
+  }
+
+  /* Input row */
+  .input-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.25rem;
+  }
+
+  .input-row input[type="text"] {
+    flex: 1;
+    height: 40px;
+    padding: 0 14px;
+    font-size: 15px;
+    font-family: 'Georgia', serif;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .input-row input[type="text"]:focus { border-color: var(--accent); }
+  .input-row input[type="text"]::placeholder { color: var(--text-tertiary); }
+
+  .input-row select {
+    height: 40px;
+    padding: 0 10px;
+    font-size: 13px;
+    font-family: sans-serif;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--text-secondary);
+    outline: none;
+    cursor: pointer;
+    width: 110px;
+  }
+
+  .input-row button {
+    height: 40px;
+    padding: 0 18px;
+    font-size: 14px;
+    font-family: sans-serif;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    white-space: nowrap;
+  }
+
+  .input-row button:hover { opacity: 0.82; }
+  .input-row button:active { transform: scale(0.97); }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 4px; margin-bottom: 1rem; }
+
+  .tab {
+    font-size: 13px;
+    font-family: sans-serif;
+    padding: 5px 14px;
+    border-radius: var(--radius-md);
+    border: 0.5px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .tab.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  /* Task list */
+  .task-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .task-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 0.85rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: border-color 0.15s, opacity 0.2s;
+  }
+
+  .task-card:hover { border-color: var(--border-hover); }
+  .task-card.done { opacity: 0.5; }
+
+  .checkbox {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-hover);
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+
+  .checkbox.checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .checkmark { display: none; }
+  .checkbox.checked .checkmark { display: block; }
+
+  .task-text {
+    flex: 1;
+    font-size: 15px;
+    font-family: 'Georgia', serif;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+
+  .task-card.done .task-text {
+    text-decoration: line-through;
+    color: var(--text-tertiary);
+  }
+
+  /* Badges */
+  .badge {
+    font-size: 11px;
+    font-family: sans-serif;
+    padding: 3px 9px;
+    border-radius: 99px;
+    font-weight: 500;
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+  }
+
+  .badge.work     { background: #E6F1FB; color: #0C447C; }
+  .badge.personal { background: #EEEDFE; color: #3C3489; }
+  .badge.health   { background: #EAF3DE; color: #27500A; }
+  .badge.other    { background: #F1EFE8; color: #444441; }
+
+  /* Delete button */
+  .del-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-tertiary);
+    font-size: 15px;
+    padding: 2px 5px;
+    border-radius: 4px;
+    line-height: 1;
+    transition: color 0.15s;
+  }
+
+  .del-btn:hover { color: #a32d2d; }
+
+  /* Empty state */
+  .empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-tertiary);
+    font-size: 14px;
+    font-family: sans-serif;
+    font-style: italic;
+  }
